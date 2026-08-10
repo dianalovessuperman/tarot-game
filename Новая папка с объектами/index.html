@@ -27,7 +27,7 @@
             width: 100%;
             max-width: 430px;
             min-height: 92vh;
-            background-image: url('фонбиблиотека.png'); 
+            background-image: url('bg-library.png'); 
             background-size: cover;
             background-position: center;
             background-color: var(--bg-dark); 
@@ -95,7 +95,6 @@
             animation: gentleSway 4s ease-in-out infinite alternate;
         }
 
-        /* Стиль для адаптивной картинки текущей карты Таро в квесте */
         .card-visual {
             max-width: 140px;
             width: 100%;
@@ -105,22 +104,6 @@
             border-radius: 12px;
             border: 2px solid var(--gold-glow);
             box-shadow: 0 0 20px rgba(226, 201, 116, 0.3);
-        }
-
-        .btn-choice {
-            background: rgba(35, 20, 48, 0.8);
-            color: var(--text-light);
-            border: 1px solid rgba(226, 201, 116, 0.4);
-            border-bottom: 4px solid #8e7631;
-            padding: 16px;
-            font-size: 15px;
-            font-family: 'Georgia', serif;
-            border-radius: 16px;
-            cursor: pointer;
-            margin-bottom: 12px;
-            text-align: left;
-            transition: all 0.1s ease;
-            width: 100%;
         }
 
         .btn-choice {
@@ -142,7 +125,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Магическое свечение при наведении */
         .btn-choice:hover {
             background: linear-gradient(135deg, rgba(62, 33, 89, 0.9) 0%, rgba(33, 16, 48, 0.95) 100%);
             border-color: #e2c974;
@@ -150,7 +132,6 @@
             transform: translateY(-2px);
         }
 
-        /* Эффект нажатия (кнопка слегка утапливается) */
         .btn-choice:active {
             transform: translateY(1px);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -200,7 +181,6 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            /* Глубокий фиолетовый центр с золотым неоновым свечением по краю */
             background: radial-gradient(circle, #25123e 0%, #0d0614 100%);
             color: var(--gold-glow);
             display: flex;
@@ -210,13 +190,11 @@
             font-size: 20px;
             cursor: pointer;
             border: 2px solid rgba(226, 201, 116, 0.4);
-            /* Магическая аура вокруг активной карты */
             box-shadow: 0 0 20px rgba(226, 201, 116, 0.25), inset 0 0 15px rgba(226, 201, 116, 0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
-        /* Эффект, когда Мастер наводит курсор на доступный уровень */
         .path-node:not(.locked):hover {
             transform: scale(1.15);
             border-color: var(--gold-glow);
@@ -225,7 +203,6 @@
             box-shadow: 0 0 30px rgba(226, 201, 116, 0.6), inset 0 0 10px rgba(226, 201, 116, 0.3);
         }
 
-        /* Заблокированные уровни (покрытые туманом забвения) */
         .path-node.locked {
             background: radial-gradient(circle, #1a1520 0%, #0c0910 100%) !important;
             color: rgba(255, 255, 255, 0.15) !important;
@@ -234,7 +211,6 @@
             cursor: not-allowed;
         }
 
-        /* Красивая подпись под кругом */
         .node-label {
             position: absolute;
             width: 180px;
@@ -248,20 +224,9 @@
             transition: opacity 0.3s;
         }
 
-        /* Подпись загорается ярче при наведении на карту */
         .path-node:hover .node-label {
             opacity: 1;
             color: var(--gold-glow);
-        }
-
-        .node-label {
-            position: absolute;
-            width: 160px;
-            text-align: center;
-            bottom: -24px;
-            font-size: 12px;
-            color: var(--text-light);
-            opacity: 0.8;
         }
 
         .node-separator {
@@ -288,7 +253,7 @@
     <!-- ЭКРАН 1: ПРОБУЖДЕНИЕ (ЗАГРУЗКА) -->
     <div id="loading-screen" class="screen active-screen" style="justify-content: center; align-items: center;">
         <div class="big-cat-entrance">
-            <img src="cat.png" style="max-width: 220px; width: 100%; border-radius: 20px; border: 2px solid var(--gold-glow); box-shadow: 0 0 30px rgba(226,201,116,0.4);" alt="Хранитель">
+            <img src="cat.png" style="max-width: 220px; width: 100%; border-radius: 20px; border: 2px solid var(--gold-glow); box-shadow: 0 0 30px rgba(226,201,116,0.4);" alt="Хранитель" onerror="this.style.display='none'">
             <h2 style="color: var(--gold-glow); margin-top:20px; text-shadow: 0 4px 10px #000;">Приветствую, Мастер</h2>
             <p style="font-style: italic; text-shadow: 0 2px 5px #000;">«Твой Источник спал слишком долго. Пора пробудить память древних карт... Я укажу дорогу».</p>
         </div>
@@ -302,7 +267,7 @@
         </div>
         
         <div class="cat-instructor-box">
-            <img src="cat.png" class="cat-avatar" alt="Кот">
+            <img src="cat.png" class="cat-avatar" alt="Кот" onerror="this.style.display='none'">
             <div class="cat-bubble" id="cat-menu-text">
                 «Мастер, Храм Судеб открыт перед тобой. С какого Аркана начнём наше вспоминание?»
             </div>
@@ -319,9 +284,7 @@
         </div>
 
         <div class="mystic-panel">
-            <!-- Динамическое изображение карты Таро для каждого уровня -->
-            <img id="level-image" src="" class="card-visual" alt="Карта Аркана">
-            
+            <img id="level-image" src="" class="card-visual" alt="Карта Аркана" onerror="this.style.display='none'">
             <h4 style="margin-top: 0; color: var(--gold-glow); letter-spacing: 1px;" id="level-title">Запрос Силы</h4>
             <p style="margin-bottom: 0; font-size: 15px;" id="level-text">Текст вопроса...</p>
         </div>
@@ -332,7 +295,6 @@
 </div>
 
 <script>
-    // === БАЗА ДАННЫХ ИГРЫ (Все 5 уровней с вашими картинками) ===
     const quests = [
         {
             id: 0,
@@ -367,7 +329,7 @@
             num: "VII",
             name: "Колесница: Воля",
             title: "Запрос Силы: Триумф Колесницы",
-            image: "chariot.png", // Ваша картинка для 3 уровня
+            image: "chariot.png",
             unlocked: false,
             text: "Молодой руководитель выгорел дотла: он пашет 24/7 ради кресла директора, жестко прессует команду и требует идеальности, но проект буксует из-за срывов подчиненных. В чём его ошибка?",
             choices: [
@@ -381,9 +343,9 @@
             num: "0",
             name: "Дурак: Прыжок веры",
             title: "Запрос Силы: Обнуление Дурака",
-            image: "fool.png", // Ваша картинка для 4 уровня
+            image: "fool.png",
             unlocked: false,
-            text: "Успешный топ-менеджер мечтает бросить душную корпорацию ради своего дела с нуля, но его паралицует страх потерять статус, уважение коллег и остаться «никем». Чему его научит Дурак?",
+            text: "Успешный топ-менеджер мечтает бросить душную корпорацию ради своего дела с нуля, но его парализует страх потерять статус, уважение коллег и остаться «никем». Чему его научит Дурак?",
             choices: [
                 { key: "A", text: "Держаться за стабильное место, статус в обществе важнее туманных амбиций.", isCorrect: false, msg: "❌ Нет. Это выбор из эго и страха. Золотая клетка так и останется клеткой." },
                 { key: "B", text: "Ждать, пока накопится сумма, полностью исключающая любые финансовые риски.", isCorrect: false, msg: "⚠️ Иллюзия ума. Идеального момента и 100% гарантий в мире не существует." },
@@ -395,7 +357,7 @@
             num: "XVIII",
             name: "Луна: Тайны Тени",
             title: "Запрос Силы: Сумерки Луны",
-            image: "moon.png", // Ваша картинка для 5 уровня
+            image: "moon.png",
             unlocked: false,
             text: "Мужчина с виду успешен, но внутри него глубокий кризис смыслов и глухая тревога. Он боится показаться слабым и глушит это экстримом и алкоголем. Как ему пройти этот туман?",
             choices: [
@@ -409,7 +371,6 @@
     let userXP = 0;
     let currentLevelId = 0;
 
-    // Входной экран кота на 3 секунды для динамики
     setTimeout(() => {
         renderMap();
         goToScreen('menu-screen');
@@ -417,11 +378,13 @@
 
     function goToScreen(screenId) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
-        document.getElementById(screenId).classList.add('active-screen');
+        const target = document.getElementById(screenId);
+        if(target) target.classList.add('active-screen');
     }
 
     function renderMap() {
         const treeContainer = document.getElementById('map-tree');
+        if(!treeContainer) return;
         treeContainer.innerHTML = "";
 
         quests.forEach((quest, index) => {
@@ -453,7 +416,6 @@
         document.getElementById('level-title').innerText = data.title;
         document.getElementById('level-text').innerHTML = data.text;
         
-        // Динамическая подгрузка картинок карт
         const imgElement = document.getElementById('level-image');
         if (data.image) {
             imgElement.src = data.image;
@@ -497,4 +459,4 @@
     }
 </script>
 </body>
-</html>s
+</html>
